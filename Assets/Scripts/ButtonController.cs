@@ -53,7 +53,7 @@ public class ButtonController : MonoBehaviour
 
     public void MenuClickModel()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(2); //old was 4
     }
 
     public void MenuClickContact()
@@ -72,6 +72,22 @@ public class ButtonController : MonoBehaviour
 
     public void OpenKingshall()
     {
+        StartCoroutine(BeginFade(img.color, Color.black, 3f));   
+    }
+
+    public Image img;
+
+    private IEnumerator BeginFade(Color start, Color end, float duration)
+    {
+        float timer = 0f;
+        
+        while (timer <= duration)
+        {
+            img.color = Color.Lerp(start, end, timer / duration);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
         switch (GameObject.Find("VR_Toggle").GetComponent<Toggle>().isOn)
         {
             case true:
@@ -80,7 +96,8 @@ public class ButtonController : MonoBehaviour
             case false:
                 SceneManager.LoadScene(5);
                 break;
-
         }
+
+
     }
 }
