@@ -72,7 +72,7 @@ public class ButtonController : MonoBehaviour
 
     public void OpenKingshall()
     {
-        StartCoroutine(BeginFade(img.color, Color.black, 3f));   
+        StartCoroutine(BeginFade(img.color, Color.white, 3f));   
     }
 
     public Image img;

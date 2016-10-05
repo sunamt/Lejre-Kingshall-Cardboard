@@ -13,8 +13,8 @@ public class Fader : MonoBehaviour {
     void Start()
     {
         //FadeIn(); Here? some on load? scenemanager.onload
-        fadeIn = new Color(0, 0, 0, 0);
-        fadeOut = Color.black;
+        fadeIn = new Color(1, 1, 1, 0);
+        fadeOut = Color.white;
         FadeIn();
     }
 

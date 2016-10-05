@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class ChangeSceneScript : MonoBehaviour
 {
@@ -50,12 +51,21 @@ public class ChangeSceneScript : MonoBehaviour
 
     private void ChangeScene()
     {
-        // Fader fader = GameObject.Find("FadeSphere").GetComponent<Fader>().FadeOut();
         string sceneName = this.gameObject.name;
         Scene sceneExists = SceneManager.GetSceneByName(sceneName);
-        print(sceneExists.name + " - Does scene exist");
-        print("Changing scene to " + sceneName);
-        SceneManager.LoadScene(sceneName);
+        SphereFader sf;
+
+        try
+        {
+            sf = GameObject.Find("Sphere_Inv").GetComponent<SphereFader>();
+            sf.FadeAlphaUp(sceneName);
+        }
+        catch (System.Exception e)
+        {
+            //print(sceneExists.name + " - Does scene exist");
+            //print("Changing scene to " + sceneName);
+            SceneManager.LoadScene(sceneName);
+        }
     }
 
     public void Gazing()
