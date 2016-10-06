@@ -48,7 +48,7 @@ public class PlaneFader : MonoBehaviour {
         }
     }
 
-    void Fade(Renderer plane, float duration, bool fadein)
+    public void Fade(Renderer plane, float duration, bool fadein)
     {
         StartCoroutine(BeginFade(plane, duration, fadein));
     }

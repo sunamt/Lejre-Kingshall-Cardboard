@@ -24,6 +24,13 @@ public class ButtonController : MonoBehaviour
         {
             StartCoroutine(WaitToLoadMenu());
         }
+
+        // for fading without the use of a button
+        if (SceneManager.GetActiveScene().name == "3_Model")
+        {
+            StartCoroutine(FadeOnEnter(img.color, new Color(1,1,1,0), 2));
+            OpenKingshall();
+        }
     }
 
     IEnumerator WaitToLoadMenu()
@@ -72,13 +79,16 @@ public class ButtonController : MonoBehaviour
 
     public void OpenKingshall()
     {
-        StartCoroutine(BeginFade(img.color, Color.white, 3f));   
+        StartCoroutine(BeginFade(new Color(1,1,1,0), Color.white, 2));   
     }
 
     public Image img;
 
     private IEnumerator BeginFade(Color start, Color end, float duration)
     {
+        // time before beginning to fade for when a button is not used
+        yield return new WaitForSeconds(6);
+
         float timer = 0f;
         
         while (timer <= duration)
@@ -97,7 +107,17 @@ public class ButtonController : MonoBehaviour
                 SceneManager.LoadScene(5);
                 break;
         }
+    }
 
+    private IEnumerator FadeOnEnter(Color start, Color end, float duration)
+    {
+        float timer = 0f;
 
+        while (timer <= duration)
+        {
+            img.color = Color.Lerp(start, end, timer / duration);
+            timer += Time.deltaTime;
+            yield return null;
+        }
     }
 }
