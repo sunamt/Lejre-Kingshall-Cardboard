@@ -22,6 +22,8 @@ public class PopUpMenu : MonoBehaviour
     private float m_FadeSpeed;
     private const string k_MaterialPropertyName = "_Alpha";
 
+    bool waitBetweenScenes = true;
+
     private void Start()
     {
         m_FadeSpeed = 1f / m_FadeDuration;

@@ -16,18 +16,29 @@ public class ChangeSceneScript : MonoBehaviour
     private float loadCircle;
     private float _gazeDelay = 3f;
 
-
+    bool wait;
 
     // Use this for initialization
     void Start()
     {
         loadUILeft = GameObject.Find("LoaderLeft");
         //loadUIRight = GameObject.Find("LoaderRight");
+        wait = true;
+        StartCoroutine(FinishWaiting());
+    }
+
+    IEnumerator FinishWaiting()
+    {
+        yield return new WaitForSeconds(5);
+        wait = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (wait)
+            return;
+
         if (_isGazed)
         {
 
