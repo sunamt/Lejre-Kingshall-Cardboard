@@ -101,10 +101,10 @@ public class ButtonController : MonoBehaviour
         switch (GameObject.Find("VR_Toggle").GetComponent<Toggle>().isOn)
         {
             case true:
-                SceneManager.LoadScene(7);
+                SceneManager.LoadScene(3); //7 old
                 break;
             case false:
-                SceneManager.LoadScene(5);
+                SceneManager.LoadScene(3); //5 old
                 break;
         }
     }
